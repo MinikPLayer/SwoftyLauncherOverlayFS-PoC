@@ -26,7 +26,7 @@ replace() {
 OG_GAME_DIR="$PWD"
 
 # Overlay directory containing files created by the swofty launcher.
-OVERLAY_DIR="/home/minik/.local/share/swofty-overlay-example"
+OVERLAY_DIR="$HOME/.local/share/swofty-overlay-example"
 
 # Temporary directory to mount the game. It's using a namespaced mount, so it's not necessary to check if it exists or not, as it's going to be overlayed anyway.
 TARGET_DIR="/tmp/game"
@@ -51,4 +51,4 @@ CMD_OG="$@"
 CMD_NEW=$(replace "$CMD_OG" "$OG_GAME_DIR" "$TARGET_DIR")
 
 # Run the game using the newly modified parameters.
-eval $@
+eval "$CMD_NEW"

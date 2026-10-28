@@ -325,7 +325,7 @@ Automated (`cargo test --release -p swofty-core -p swofty-cli --no-fail-fast`, p
 - Copy-mode tests (`restore`, `session_recovery`, `damaged_state`) still pass unchanged: Windows and default Linux behaviour are the same.
 - Overlay mode never writes into the game dir: run the overlay prepare path against a tempdir game, and check the game tree (hashes and mtimes) is byte-identical before and after.
 
-Manual (release build; the launch option in PRETASK5 plus `--use-overlayfs`; recreate `target/loader` → `/home/minik/SwoftyLauncher/loader` first, because it's missing right now):
+Manual (release build; the launch option in PRETASK5 plus `--use-overlayfs`; recreate `target/loader` → `~/SwoftyLauncher/loader` first, because it's missing right now):
 - Launch from Steam Play and from the launcher. Mods and loader attach in-game, and `loader.log` ends up in `~/.local/share/swofty/logs` and the session folder.
 - The second launch writes about 0 bytes and starts without the 5 s install. Exit takes no rollback time. Record numbers against the SUMMARY2 baseline (5 s / 10.4 GiB, 3.4 s / 4.5 GiB).
 - After exit or `pkill -9 -f "[s]wofty run"`: `find "<game>" -newer <marker>` is empty, there's no `version.dll` or `.bak`, `findmnt` on the host shows no overlay, and Steam "verify integrity" is clean.
